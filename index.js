@@ -4,6 +4,7 @@ const timeList = document.querySelector("#time-list");
 const timeElement = document.querySelector("#time");
 const board = document.querySelector("#board");
 let time = 0;
+let score = 0;
 startBtn.addEventListener("click", (event) => {
   event.preventDefault();
   screens[0].classList.add("up");
@@ -52,3 +53,10 @@ function createCircle() {
 function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
+board.addEventListener("click", (event) => {
+  if (event.target.classList.contains("circle")) {
+    score++;
+    event.target.remove();
+    createCircle();
+  }
+});
