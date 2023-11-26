@@ -36,6 +36,8 @@ function setTime(value) {
   timeElement.innerHTML = `00:${value}`;
 }
 function finishGame() {
+  timeElement.parentNode.classList.add("hide");
+  board.innerHTML = `<h1>Счет: <span class='primary'>${score}</span></h1>`;
 }
 function createCircle() {
   const circle = document.createElement("div");
