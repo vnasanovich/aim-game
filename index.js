@@ -5,6 +5,14 @@ const timeElement = document.querySelector("#time");
 const board = document.querySelector("#board");
 let time = 0;
 let score = 0;
+const colors = [
+  "#FF69B4",
+  "#FF69B4",
+  "#8A2BE2",
+  "#00FF7F",
+  "#FF7F50",
+  "#ffff00",
+];
 startBtn.addEventListener("click", (event) => {
   event.preventDefault();
   screens[0].classList.add("up");
@@ -45,6 +53,8 @@ function createCircle() {
   const { width, height } = board.getBoundingClientRect();
   const x = getRandomNumber(0, width - size);
   const y = getRandomNumber(0, height - size);
+  let color = getRandomColor();
+  circle.style.background = color;
   circle.classList.add("circle");
   circle.style.width = `${size}px`;
   circle.style.height = `${size}px`;
@@ -62,3 +72,7 @@ board.addEventListener("click", (event) => {
     createCircle();
   }
 });
+function getRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
